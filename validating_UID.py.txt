@@ -1,0 +1,17 @@
+import re
+
+def validate_uid(uid):
+    if len(uid) != 10 or not uid.isalnum():
+        return "Invalid"
+
+    if len(set(uid)) != 10:
+        return "Invalid"
+    if len(re.findall(r'[A-Z]', uid)) < 2:
+        return "Invalid"
+    if len(re.findall(r'[0-9]', uid)) < 3:
+        return "Invalid"
+    
+    return "Valid"
+t = int(input())
+for _ in range(t):
+    print(validate_uid(input()))
